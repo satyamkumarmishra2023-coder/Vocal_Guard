@@ -59,36 +59,39 @@ html, body, [data-testid="stAppViewContainer"],
     z-index: 9999;
 }
 
-/* ── Sidebar — desktop par normal, phone par collapsible ── */
-[data-testid="stSidebar"] {
-    background: #060d1a !important;
-    border-right: 1px solid var(--border) !important;
-}
-[data-testid="stSidebar"] * { font-family: var(--body) !important; }
-[data-testid="stSidebar"] .stSelectbox label,
-[data-testid="stSidebar"] p,
-[data-testid="stSidebar"] li { color: var(--text) !important; }
-
-/* ── Hide Streamlit chrome (header transparent rakho taaki phone par sidebar toggle dikhe) ── */
-#MainMenu, footer { visibility: hidden; }
-header[data-testid="stHeader"] {
-    background: transparent !important;
-}
-.stDeployButton { display: none; }
-
-/* ── Mobile optimization ── */
-@media (max-width: 768px) {
-    .block-container {
-        padding: 1rem 1rem 3rem !important;
-    }
-    .metric-grid {
-        grid-template-columns: repeat(2, 1fr) !important;
-    }
-    .vg-logo {
-        font-size: 1.7rem !important;
-    }
+/* ── Sidebar Open / Close Toggle Button (Phone + Laptop dono ke liye) ── */
+[data-testid="collapsedControl"],
+[data-testid="stSidebarCollapsedControl"],
+[data-testid="stSidebarCollapseButton"] {
+    display: flex !important;
+    visibility: visible !important;
+    opacity: 1 !important;
 }
 
+[data-testid="collapsedControl"] button,
+[data-testid="stSidebarCollapsedControl"] button,
+[data-testid="stSidebarCollapseButton"] button {
+    background: var(--bg-card) !important;
+    border: 1px solid var(--cyan) !important;
+    border-radius: 6px !important;
+    color: var(--cyan) !important;
+    box-shadow: 0 0 10px rgba(0, 229, 255, 0.25) !important;
+    transition: all 0.2s ease !important;
+}
+
+[data-testid="collapsedControl"] button:hover,
+[data-testid="stSidebarCollapsedControl"] button:hover,
+[data-testid="stSidebarCollapseButton"] button:hover {
+    background: rgba(0, 229, 255, 0.15) !important;
+    box-shadow: 0 0 16px rgba(0, 229, 255, 0.5) !important;
+}
+
+[data-testid="collapsedControl"] svg,
+[data-testid="stSidebarCollapsedControl"] svg,
+[data-testid="stSidebarCollapseButton"] svg {
+    fill: var(--cyan) !important;
+    color: var(--cyan) !important;
+}
 /* ── Hide Streamlit chrome ── */
 #MainMenu, footer, header { visibility: hidden; }
 .stDeployButton { display: none; }
