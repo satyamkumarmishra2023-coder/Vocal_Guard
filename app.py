@@ -93,9 +93,30 @@ html, body, [data-testid="stAppViewContainer"],
     color: var(--cyan) !important;
 }
 /* ── Hide Streamlit chrome ── */
-#MainMenu, footer, header { visibility: hidden; }
-.stDeployButton { display: none; }
+/* ── Hide Streamlit chrome (header visible rakha hai sidebar icon ke liye) ── */
+#MainMenu, footer, .stDeployButton, [data-testid="stToolbar"] {
+    display: none !important;
+}
+header[data-testid="stHeader"] {
+    background: transparent !important;
+    visibility: visible !important;
+}
 
+/* ── Sidebar dark theme + Mobile optimization ── */
+[data-testid="stSidebar"] {
+    background: #060d1a !important;
+    border-right: 1px solid var(--border) !important;
+}
+[data-testid="stSidebar"] * { font-family: var(--body) !important; }
+[data-testid="stSidebar"] .stSelectbox label,
+[data-testid="stSidebar"] p,
+[data-testid="stSidebar"] li { color: var(--text) !important; }
+
+@media (max-width: 768px) {
+    .block-container { padding: 1rem 1rem 3rem !important; }
+    .metric-grid { grid-template-columns: repeat(2, 1fr) !important; }
+    .vg-logo { font-size: 1.7rem !important; }
+}
 /* ── Main container ── */
 .block-container {
     max-width: 820px !important;
