@@ -89,8 +89,7 @@ html, body,
    ══════════════════════════════════════════ */
 #MainMenu,
 footer,
-.stDeployButton,
-[data-testid="stToolbar"] {
+.stDeployButton {
     display: none !important;
     visibility: hidden !important;
 }
