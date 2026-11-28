@@ -8,7 +8,7 @@ st.set_page_config(
     page_title="VocalGuard · Voice Forensics",
     page_icon="🛡️",
     layout="centered",
-    initial_sidebar_state="expanded"
+    initial_sidebar_state="auto"
 )
 
 # ─── Global CSS ───────────────────────────────────────────────────────────────
@@ -59,28 +59,35 @@ html, body, [data-testid="stAppViewContainer"],
     z-index: 9999;
 }
 
-/* ── Sidebar — always visible, no collapse ── */
+/* ── Sidebar — desktop par normal, phone par collapsible ── */
 [data-testid="stSidebar"] {
     background: #060d1a !important;
     border-right: 1px solid var(--border) !important;
-    min-width: 240px !important;
-    max-width: 240px !important;
-    transform: none !important;
-    visibility: visible !important;
-}
-/* Hide the collapse/expand arrow button completely */
-[data-testid="stSidebarCollapseButton"],
-button[kind="header"],
-.st-emotion-cache-1rtdyuf,
-.st-emotion-cache-zt5igj,
-[data-testid="collapsedControl"] {
-    display: none !important;
-    visibility: hidden !important;
 }
 [data-testid="stSidebar"] * { font-family: var(--body) !important; }
 [data-testid="stSidebar"] .stSelectbox label,
 [data-testid="stSidebar"] p,
 [data-testid="stSidebar"] li { color: var(--text) !important; }
+
+/* ── Hide Streamlit chrome (header transparent rakho taaki phone par sidebar toggle dikhe) ── */
+#MainMenu, footer { visibility: hidden; }
+header[data-testid="stHeader"] {
+    background: transparent !important;
+}
+.stDeployButton { display: none; }
+
+/* ── Mobile optimization ── */
+@media (max-width: 768px) {
+    .block-container {
+        padding: 1rem 1rem 3rem !important;
+    }
+    .metric-grid {
+        grid-template-columns: repeat(2, 1fr) !important;
+    }
+    .vg-logo {
+        font-size: 1.7rem !important;
+    }
+}
 
 /* ── Hide Streamlit chrome ── */
 #MainMenu, footer, header { visibility: hidden; }
